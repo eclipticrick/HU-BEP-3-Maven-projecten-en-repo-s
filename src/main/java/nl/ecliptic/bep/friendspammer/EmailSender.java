@@ -19,8 +19,8 @@ public class EmailSender {
 		props.put("mail.smtp.port", "2525");
 		props.put("mail.smtp.auth", "true");
 
-		String username = "YOUR MAIL USERNAME";
-		String password = "YOUR MAIL PASSWORD";
+		String username = "95f3553a6be4f6";
+		String password = "98af038075b6b1";
 
 		Session session = Session.getInstance(props,
 				  new javax.mail.Authenticator() {
@@ -57,8 +57,8 @@ public class EmailSender {
 		props.put("mail.smtp.port", "2525");
 		props.put("mail.smtp.auth", "true");
 
-		String username = "YOUR MAIL USERNAME";
-		String password = "YOUR MAIL PASSWORD";
+		String username = "95f3553a6be4f6";
+		String password = "98af038075b6b1";
 
 		Session session = Session.getInstance(props,
 				  new javax.mail.Authenticator() {

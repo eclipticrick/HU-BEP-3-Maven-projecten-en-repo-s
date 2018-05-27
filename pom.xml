@@ -8,8 +8,8 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencies>
@@ -35,11 +35,17 @@
 			<version>1.6.1</version>
 		</dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.1</version>
+        </dependency>
 
 	</dependencies>
 
 	<build>
-		<plugins>
+		<!--<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -49,6 +55,33 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-		</plugins>
+		</plugins>-->
+		<extensions>
+			<extension>
+				<groupId>io.packagecloud.maven.wagon</groupId>
+				<artifactId>maven-packagecloud-wagon</artifactId>
+				<version>0.0.6</version>
+			</extension>
+		</extensions>
 	</build>
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>friendspammer</id>
+            <name>friendspammer Repository</name>
+            <url>file:///C:/Users/wes_v/.m2/repository</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+	<!--<distributionManagement>
+		<repository>
+			<id>eclipticrick-friendspammer</id>
+			<url>packagecloud+https://packagecloud.io/eclipticrick/friendspammer/maven2</url>
+		</repository>
+		<snapshotRepository>
+			<id>eclipticrick-friendspammer</id>
+			<url>packagecloud+https://packagecloud.io/eclipticrick/friendspammer/maven2</url>
+		</snapshotRepository>
+	</distributionManagement>-->
+
 </project>
