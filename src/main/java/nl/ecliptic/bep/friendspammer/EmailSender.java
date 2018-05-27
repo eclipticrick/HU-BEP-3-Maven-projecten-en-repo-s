@@ -14,6 +14,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
+
+    private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
+
     public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws MessagingException{
 
         Properties props = new Properties();
@@ -25,8 +28,7 @@ public class EmailSender {
         String password = "98af038075b6b1";
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
+            @Override protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
@@ -61,8 +63,7 @@ public class EmailSender {
         String password = "98af038075b6b1";
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
+            @Override protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
         });
@@ -87,12 +88,9 @@ public class EmailSender {
             }
 
         } catch (MessagingException e) {
-            // throw new RuntimeException(e);
             logger.error("MessagingException", e);
             throw new MessagingException("MessagingException thrown");
         }
     }
-
-    private final static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
 }

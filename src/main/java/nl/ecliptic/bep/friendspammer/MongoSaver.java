@@ -14,6 +14,8 @@ import org.slf4j.LoggerFactory;
 
 public class MongoSaver {
 
+    private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
+
     static void saveEmail(String to, String from, String subject, String text, Boolean html) {
         String userName = "eclipticrick";
         String password = "12345678";
@@ -37,10 +39,8 @@ public class MongoSaver {
     }
 
 
-    public static void main(String ...args) throws UnknownHostException {
+    public static void main(String ...args) {
         logger.debug("test");
     }
-
-    private final static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
 }
