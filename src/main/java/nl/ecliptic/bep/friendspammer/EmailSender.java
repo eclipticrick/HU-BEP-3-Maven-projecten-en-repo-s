@@ -14,7 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-    public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
+    public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws MessagingException{
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -25,6 +25,7 @@ public class EmailSender {
         String password = "98af038075b6b1";
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(username, password);
             }
@@ -45,11 +46,11 @@ public class EmailSender {
 
         } catch (MessagingException e) {
             logger.error("MessagingException", e);
-            throw new RuntimeException(e);
+            throw new MessagingException("MessagingException thrown");
         }
     }
 
-    public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) {
+    public static void sendEmail(String subject, String[] toList, String messageBody, boolean asHtml) throws MessagingException {
 
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.mailtrap.io");
@@ -86,7 +87,9 @@ public class EmailSender {
             }
 
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+            // throw new RuntimeException(e);
+            logger.error("MessagingException", e);
+            throw new MessagingException("MessagingException thrown");
         }
     }
 
