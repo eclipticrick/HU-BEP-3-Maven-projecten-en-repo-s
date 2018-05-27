@@ -1,4 +1,4 @@
-package com.example.project;
+package nl.ecliptic.bep.friendspammer;
 
 import java.net.UnknownHostException;
 import java.util.Arrays;
