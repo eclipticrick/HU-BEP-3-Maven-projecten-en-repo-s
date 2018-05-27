@@ -5,3 +5,9 @@ build:
       goals: install
       cache_repo: true
       version: 3.5.2
+sonar:
+  steps:
+     - wercker/maven:
+       goals: clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dmaven.test.failure.ignore=true -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=eclipticrick-github -Dsonar.login=3c2ce377f43a9e13acf523d6902ccc3f6f332e70
+       cache_repo: true
+       version: 3.5.2
