@@ -45,17 +45,6 @@
     </dependencies>
 
     <build>
-        <!--<plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>-->
         <extensions>
             <extension>
                 <groupId>io.packagecloud.maven.wagon</groupId>
@@ -65,17 +54,6 @@
         </extensions>
     </build>
 
-    <!--
-    <distributionManagement>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>friendspammer</id>
-            <name>friendspammer Repository</name>
-            <url>file:///C:/Users/wes_v/.m2/repository</url>
-            <layout>default</layout>
-        </repository>
-    </distributionManagement>
-    -->
     <distributionManagement>
         <repository>
             <id>packagecloud-friendspammer</id>
@@ -86,16 +64,5 @@
             <url>packagecloud+https://packagecloud.io/eclipticrick/friendspammer</url>
         </snapshotRepository>
     </distributionManagement>
-
-    <!--<distributionManagement>
-        <repository>
-            <id>eclipticrick-friendspammer</id>
-            <url>packagecloud+https://packagecloud.io/eclipticrick/friendspammer/maven2</url>
-        </repository>
-        <snapshotRepository>
-            <id>eclipticrick-friendspammer</id>
-            <url>packagecloud+https://packagecloud.io/eclipticrick/friendspammer/maven2</url>
-        </snapshotRepository>
-    </distributionManagement>-->
 
 </project>
