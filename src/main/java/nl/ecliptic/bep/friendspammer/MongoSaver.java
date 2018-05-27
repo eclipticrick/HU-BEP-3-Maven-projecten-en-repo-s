@@ -1,16 +1,9 @@
 package nl.ecliptic.bep.friendspammer;
 
 import java.net.UnknownHostException;
-import java.util.Arrays;
-
 import org.bson.Document;
-
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
-import com.mongodb.MongoClientURI;
 import com.mongodb.MongoCredential;
 import com.mongodb.MongoException;
 import com.mongodb.ServerAddress;
@@ -20,43 +13,34 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class MongoSaver {
-	private final static Logger logger = LoggerFactory.getLogger(EmailSender.class);
-	
-	public static boolean saveEmail(String to, String from, String subject, String text, Boolean html) {
-		String userName = "eclipticrick";
-		String password = "12345678";
-		String database = "hu-bep-friendspammer";
-		
-		MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
-		
-		boolean success = true;
-		
-		try (MongoClient mongoClient = new MongoClient(new ServerAddress("ds237620.mlab.com", 37620), credential, MongoClientOptions.builder().build()) ) {
-			
-			MongoDatabase db = mongoClient.getDatabase( database );
-			
-			MongoCollection<Document> c = db.getCollection("email");
-			
-			Document  doc = new Document ("to", to)
-			        .append("from", from)
-			        .append("subject", subject)
-			        .append("text", text)
-			        .append("asHtml", html);
-			c.insertOne(doc);
-		} catch (MongoException mongoException) {
-			logger.info("XXXXXXXXXXXXXXXXXX ERROR WHILE SAVING TO MONGO XXXXXXXXXXXXXXXXXXXXXXXXXX");
-			mongoException.printStackTrace();
-			success = false;
-		}
-		
-		return success;
- 		
-	}
-	
-	
-	public static void main(String ...args) throws UnknownHostException {
 
-		logger.debug("test");
-	}
+    static void saveEmail(String to, String from, String subject, String text, Boolean html) {
+        String userName = "eclipticrick";
+        String password = "12345678";
+        String database = "hu-bep-friendspammer";
+        MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
+
+        try (MongoClient mongoClient = new MongoClient(new ServerAddress("ds237620.mlab.com", 37620), credential, MongoClientOptions.builder().build()) ) {
+            MongoDatabase db = mongoClient.getDatabase( database );
+            MongoCollection<Document> c = db.getCollection("email");
+            Document  doc = new Document ("to", to)
+                    .append("from", from)
+                    .append("subject", subject)
+                    .append("text", text)
+                    .append("asHtml", html);
+            c.insertOne(doc);
+        }
+        catch (MongoException mongoException) {
+            logger.info("ERROR WHILE SAVING TO MONGO");
+            logger.error("mongoException", mongoException);
+        }
+    }
+
+
+    public static void main(String ...args) throws UnknownHostException {
+        logger.debug("test");
+    }
+
+    private final static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
 }
