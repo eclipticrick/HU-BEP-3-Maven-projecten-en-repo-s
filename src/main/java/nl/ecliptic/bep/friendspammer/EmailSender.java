@@ -1,5 +1,8 @@
 package nl.ecliptic.bep.friendspammer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -11,7 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-
+	private final static Logger logger = LoggerFactory.getLogger(EmailSender.class);
 	public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) {
 
 		Properties props = new Properties();
@@ -60,12 +63,11 @@ public class EmailSender {
 		String username = "95f3553a6be4f6";
 		String password = "98af038075b6b1";
 
-		Session session = Session.getInstance(props,
-				  new javax.mail.Authenticator() {
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
 						return new PasswordAuthentication(username, password);
 					}
-				  });
+		});
 		try {
 
 			for (int index = 0; index < toList.length; index++) {
@@ -83,7 +85,7 @@ public class EmailSender {
 				}
 				Transport.send(message);
 
-				System.out.println("Done");
+				logger.info("Done");
 			}
 
 		} catch (MessagingException e) {
