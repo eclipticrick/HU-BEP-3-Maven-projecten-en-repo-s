@@ -1,6 +1,5 @@
 package nl.ecliptic.bep.friendspammer;
 
-import java.net.UnknownHostException;
 import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;

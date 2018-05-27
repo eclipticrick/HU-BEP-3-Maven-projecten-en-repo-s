@@ -14,8 +14,11 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-
     private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
+
+    private EmailSender() {
+        throw new IllegalStateException("This is a utility class");
+    }
 
     public static void sendEmail(String subject, String to, String messageBody, boolean asHtml) throws MessagingException{
 
