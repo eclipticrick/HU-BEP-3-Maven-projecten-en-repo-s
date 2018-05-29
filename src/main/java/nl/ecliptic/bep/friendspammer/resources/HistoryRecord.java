@@ -8,7 +8,9 @@ public class HistoryRecord {
     private String text;
     private boolean asHtml;
 
-    public HistoryRecord() {}
+    public HistoryRecord() {
+        // used to instantiate the object, use setters to give it values
+    }
 
     public String getTo() {
         return to;

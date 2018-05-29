@@ -41,7 +41,7 @@ public class MongoSaver {
         }
     }
 
-    static ArrayList<HistoryRecord> getEmailHistory() throws MongoException {
+    static ArrayList<HistoryRecord> getEmailHistory() {
         String userName = "eclipticrick";
         String password = "12345678";
         String database = "hu-bep-friendspammer";
@@ -77,7 +77,6 @@ public class MongoSaver {
     }
 
     public static void main(String ...args) {
-        logger.debug("test");
         logger.debug("test");
     }
 
