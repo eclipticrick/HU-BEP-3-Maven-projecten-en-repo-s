@@ -5,6 +5,11 @@ import javax.mail.Session;
 import java.util.Properties;
 
 class EmailConfig {
+
+    private EmailConfig() {
+        throw new IllegalStateException("This is a utility class");
+    }
+
     static Session getSession() {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.mailtrap.io");
