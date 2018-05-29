@@ -78,6 +78,7 @@ public class MongoSaver {
 
     public static void main(String ...args) {
         logger.debug("test");
+        logger.debug("test");
     }
 
 }
