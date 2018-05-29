@@ -42,7 +42,7 @@ public class MongoSaver {
         }
     }
 
-    static List<HistoryRecord> getEmailHistory() {
+    public static List<HistoryRecord> getEmailHistory() {
 
         MongoCredential credential = MongoConfig.getMongoCredential();
         String database = MongoConfig.getDatabase();
