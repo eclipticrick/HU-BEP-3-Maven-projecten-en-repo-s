@@ -41,7 +41,7 @@ public class MongoSaver {
         }
     }
 
-    static ArrayList<HistoryRecord> getEmailHistory() {
+    public static ArrayList<HistoryRecord> getEmailHistory() {
         String userName = "eclipticrick";
         String password = "12345678";
         String database = "hu-bep-friendspammer";
