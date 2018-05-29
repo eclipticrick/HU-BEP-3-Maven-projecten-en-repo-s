@@ -12,15 +12,16 @@ import nl.ecliptic.bep.friendspammer.resources.HistoryRecord;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Testing {
     @Test public void test_fail() {
         // fail(":)");
     }
     @Test public void getEmailHistoryTest() {
-        ArrayList<HistoryRecord> history = MongoSaver.getEmailHistory();
-        //assertThat(history, hasItem(new HistoryRecord()));
-        //assertThat(history.size(), greaterThan(4));
-        assertThat(history.size(), is(not(equalTo(0))));
+        List<HistoryRecord> historyInProgram = MongoSaver.getEmailHistory();
+        //List<HistoryRecord> historyFromMongoDB = new ArrayList<>();
+
+        assertThat(historyInProgram.size(), is(not(equalTo(0))));
     }
 }

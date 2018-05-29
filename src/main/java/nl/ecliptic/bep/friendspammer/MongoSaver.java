@@ -1,6 +1,7 @@
 package nl.ecliptic.bep.friendspammer;
 
 import nl.ecliptic.bep.friendspammer.resources.HistoryRecord;
+
 import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
@@ -14,16 +15,16 @@ import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 public class MongoSaver {
 
     private static final Logger logger = LoggerFactory.getLogger(EmailSender.class);
 
     static void saveEmail(String to, String from, String subject, String text, Boolean html) {
-        String userName = "eclipticrick";
-        String password = "12345678";
-        String database = "hu-bep-friendspammer";
-        MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
+
+        MongoCredential credential = MongoConfig.getMongoCredential();
+        String database = MongoConfig.getDatabase();
 
         try (MongoClient mongoClient = new MongoClient(new ServerAddress("ds237620.mlab.com", 37620), credential, MongoClientOptions.builder().build()) ) {
             MongoDatabase db = mongoClient.getDatabase( database );
@@ -41,19 +42,17 @@ public class MongoSaver {
         }
     }
 
-    public static ArrayList<HistoryRecord> getEmailHistory() {
-        String userName = "eclipticrick";
-        String password = "12345678";
-        String database = "hu-bep-friendspammer";
+    static List<HistoryRecord> getEmailHistory() {
 
-        MongoCredential credential = MongoCredential.createCredential(userName, database, password.toCharArray());
+        MongoCredential credential = MongoConfig.getMongoCredential();
+        String database = MongoConfig.getDatabase();
 
         try (MongoClient mongoClient = new MongoClient(new ServerAddress("ds237620.mlab.com", 37620), credential, MongoClientOptions.builder().build()) ) {
             MongoDatabase db = mongoClient.getDatabase( database );
             MongoCollection<Document> c = db.getCollection("email");
             Iterator<Document> it = c.find().iterator();
 
-            ArrayList<HistoryRecord> history = new ArrayList<>();
+            List<HistoryRecord> history = new ArrayList<>();
             while(it.hasNext()) {
                 Document email = it.next();
                 HistoryRecord historyRecord = new HistoryRecord();
