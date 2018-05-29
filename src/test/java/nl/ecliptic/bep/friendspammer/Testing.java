@@ -22,7 +22,5 @@ public class Testing {
         //assertThat(history, hasItem(new HistoryRecord()));
         //assertThat(history.size(), greaterThan(4));
         assertThat(history.size(), is(not(equalTo(0))));
-        assertThat(history.size(), is(not(equalTo(1))));
-        assertThat(history.size(), is(not(equalTo(2))));
     }
 }

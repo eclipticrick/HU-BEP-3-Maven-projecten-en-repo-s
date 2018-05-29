@@ -62,7 +62,7 @@ public class MongoSaver {
                 historyRecord.setFrom   ( (String)email.get("from") );
                 historyRecord.setSubject( (String)email.get("subject") );
                 historyRecord.setText   ( (String)email.get("text") );
-                historyRecord.setAsHtml ( (String)email.get("asHtml") );
+                historyRecord.setAsHtml ( (boolean)email.get("asHtml") );
 
                 history.add(historyRecord);
             }

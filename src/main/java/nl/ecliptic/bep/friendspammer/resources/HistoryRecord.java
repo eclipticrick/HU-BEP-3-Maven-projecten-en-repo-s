@@ -6,7 +6,7 @@ public class HistoryRecord {
     private String from;
     private String subject;
     private String text;
-    private String asHtml;
+    private boolean asHtml;
 
     public HistoryRecord() {}
 
@@ -42,11 +42,11 @@ public class HistoryRecord {
         this.text = text;
     }
 
-    public String getAsHtml() {
+    public boolean getAsHtml() {
         return asHtml;
     }
 
-    public void setAsHtml(String asHtml) {
+    public void setAsHtml(boolean asHtml) {
         this.asHtml = asHtml;
     }
 }
